@@ -46,3 +46,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #ページネーション
 gem 'pagy'
+
+gem 'pry-byebug', group: :development

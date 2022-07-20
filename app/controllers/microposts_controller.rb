@@ -1,6 +1,5 @@
 class MicropostsController < ApplicationController
   before_action :require_user_logged_in
-  #destroy処理の前にcorrect_userを実行し自分自身のMicropostsかを確認
   before_action :correct_user, only: [:destroy]
   
   
@@ -17,7 +16,7 @@ class MicropostsController < ApplicationController
   end
 
   def destroy
-    @micro.destroy
+    @micropost.destroy
     flash[:success] = 'メッセージを削除しました。'
     redirect_back(fallback_location: root_path)
   end
@@ -28,7 +27,6 @@ class MicropostsController < ApplicationController
     params.require(:micropost).permit(:content)
   end
   
-  #Micropostsが本当にログインユーザーの所有しているものか？
   def correct_user
     @micropost = current_user.microposts.find_by(id: params[:id])
     unless @micropost
